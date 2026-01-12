@@ -46,6 +46,11 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ``` 
 
+And it will return:
+```
+{"product":35455,"brand":1,"priceList":4,"startDateTime":"2020-06-15T00:00:00","endDateTime":"2020-12-31T23:59:59","price":38.95}
+```
+
 Alternatively, if you prefer to utilize POST services, use the endpoint `POST /prices` with a payload structured as follows:
 
 ```
@@ -56,7 +61,7 @@ Alternatively, if you prefer to utilize POST services, use the endpoint `POST /p
 }
 ```
 
-n this context, `product` denotes the product ID being queried, `brand` represents the brand ID,
+On this context, `product` denotes the product ID being queried, `brand` represents the brand ID,
 and `on` specifies the date and time for which the price is requested, formatted according to ISO-8601 in UTC.
 
 > Note: For simplicity, no security measures have been incorporated into this project; therefore, all REST endpoints remain unprotected.
