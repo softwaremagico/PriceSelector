@@ -1,5 +1,10 @@
 # Price Selector Tool
 
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=softwaremagico_PriceSelector&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=kendo-tournament-frontend)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=softwaremagico_PriceSelector&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=kendo-tournament-frontend)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=softwaremagico_PriceSelector&metric=bugs)](https://sonarcloud.io/summary/new_code?id=kendo-tournament-frontend)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=softwaremagico_PriceSelector&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=kendo-tournament-frontend)
+
 This tool serves as an example of a REST server implemented using Spring Boot.
 
 ## Test
