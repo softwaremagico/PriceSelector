@@ -1,0 +1,14 @@
+.classpath
+.idea
+gen
+target
+bin
+tmp
+*.zip
+.settings
+.project
+*.jar
+*.iml
+.attach_*
+.env_bak
+target/*
