@@ -1,6 +1,7 @@
 package com.test.bcnc.infrastructure.price.persistence.adapter;
 
-import com.test.bcnc.application.port.PriceSelectorPort;
+import com.test.bcnc.application.exceptions.PriceNotFoundException;
+import com.test.bcnc.application.port.PriceSelectorInteractionPort;
 import com.test.bcnc.domain.price.Price;
 import com.test.bcnc.infrastructure.price.persistence.PriceRepository;
 import com.test.bcnc.infrastructure.price.persistence.mapper.PriceMapper;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Component
-public class PriceAdapter implements PriceSelectorPort {
+public class PriceAdapter implements PriceSelectorInteractionPort {
 
     private final PriceRepository repository;
     private final PriceMapper priceMapper;

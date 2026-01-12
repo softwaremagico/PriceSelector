@@ -1,4 +1,4 @@
-package com.test.bcnc.infrastructure.price.persistence.adapter;
+package com.test.bcnc.application.exceptions;
 
 import com.test.bcnc.logger.exceptions.LoggedException;
 

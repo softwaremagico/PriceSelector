@@ -7,13 +7,11 @@
     <test name="prices" enabled="true" preserve-order="true">
         <groups>
             <run>
-                <include name="mapperTests"/>
-                <include name="priceRepository"/>
+                <include name="priceAdapter"/>
             </run>
         </groups>
         <classes>
-            <class name="com.test.bcnc.infrastructure.price.persistence.mapper.PriceMapperTest"/>
-            <class name="com.test.bcnc.infrastructure.price.persistence.PriceRepositoryTests"/>
+            <class name="com.test.bcnc.application.adapter.PriceSelectorAdapterTest"/>
         </classes>
     </test>
 </suite>
