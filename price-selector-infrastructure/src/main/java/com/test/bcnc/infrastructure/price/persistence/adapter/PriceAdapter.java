@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+/***
+ * Defines the implementation of the app logic with the Spring Data JPA.
+ */
 @Component
 public class PriceAdapter implements PriceSelectorInteractionPort {
 
