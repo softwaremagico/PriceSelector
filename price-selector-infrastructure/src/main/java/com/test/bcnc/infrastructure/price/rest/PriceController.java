@@ -25,12 +25,12 @@ import java.time.ZoneId;
  */
 @RestController
 @RequestMapping("/prices")
-public class PriceServices {
+public class PriceController {
 
     private final PriceSelectorInteractionPort priceSelectorInteractionPort;
     private final PriceDTOMapper priceDTOMapper;
 
-    public PriceServices(PriceSelectorInteractionPort priceSelectorInteractionPort, PriceDTOMapper priceDTOMapper) {
+    public PriceController(PriceSelectorInteractionPort priceSelectorInteractionPort, PriceDTOMapper priceDTOMapper) {
         this.priceSelectorInteractionPort = priceSelectorInteractionPort;
         this.priceDTOMapper = priceDTOMapper;
     }

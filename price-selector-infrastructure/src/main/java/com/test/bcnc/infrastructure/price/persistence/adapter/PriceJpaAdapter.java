@@ -1,7 +1,7 @@
 package com.test.bcnc.infrastructure.price.persistence.adapter;
 
 import com.test.bcnc.application.exceptions.PriceNotFoundException;
-import com.test.bcnc.application.port.PriceSelectorInteractionPort;
+import com.test.bcnc.application.port.PriceSelectorPort;
 import com.test.bcnc.domain.price.Price;
 import com.test.bcnc.infrastructure.price.persistence.PriceRepository;
 import com.test.bcnc.infrastructure.price.persistence.mapper.PriceMapper;
@@ -15,12 +15,12 @@ import java.util.Optional;
  * Defines the implementation of the app logic with the Spring Data JPA.
  */
 @Component
-public class PriceAdapter implements PriceSelectorInteractionPort {
+public class PriceJpaAdapter implements PriceSelectorPort {
 
     private final PriceRepository repository;
     private final PriceMapper priceMapper;
 
-    public PriceAdapter(PriceRepository repository, PriceMapper priceMapper) {
+    public PriceJpaAdapter(PriceRepository repository, PriceMapper priceMapper) {
         this.repository = repository;
         this.priceMapper = priceMapper;
     }

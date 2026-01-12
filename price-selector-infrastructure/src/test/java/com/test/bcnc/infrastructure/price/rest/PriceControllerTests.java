@@ -38,7 +38,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ExtendWith(MockitoExtension.class)
 @Test(groups = "priceServices")
-public class PriceServicesTests extends AbstractTestNGSpringContextTests {
+public class PriceControllerTests extends AbstractTestNGSpringContextTests {
     private static final long PRODUCT_ID = 35455;
     private static final long BRAND_ID = 1;
     private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssX");

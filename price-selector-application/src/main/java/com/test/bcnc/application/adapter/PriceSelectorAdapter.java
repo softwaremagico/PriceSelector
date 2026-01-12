@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-public class PriceSelectorAdapter implements PriceSelectorPort {
-    private final PriceSelectorInteractionPort priceSelectorPort;
+public class PriceSelectorAdapter implements PriceSelectorInteractionPort {
+    private final PriceSelectorPort priceSelectorPort;
 
-    public PriceSelectorAdapter(PriceSelectorInteractionPort priceSelectorPort) {
+    public PriceSelectorAdapter(PriceSelectorPort priceSelectorPort) {
         this.priceSelectorPort = priceSelectorPort;
     }
 
