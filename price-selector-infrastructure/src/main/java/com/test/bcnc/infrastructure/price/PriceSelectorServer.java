@@ -13,6 +13,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.TimeZone;
 
+
+/***
+ * Starts and run the application using Spring Boot.
+ */
 @OpenAPIDefinition(servers = {@Server(url = "${server.servlet.context-path}", description = "Default Server URL")})
 @ComponentScan({"com.test.bcnc"})
 @EnableJpaRepositories({"com.test.bcnc.infrastructure"})

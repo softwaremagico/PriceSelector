@@ -8,6 +8,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * JPA repository with Price actions.
+ */
 @Repository
 public interface PriceRepository extends JpaRepository<PriceEntity, Long> {
 

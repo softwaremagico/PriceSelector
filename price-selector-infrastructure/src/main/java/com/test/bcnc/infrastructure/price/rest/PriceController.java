@@ -1,7 +1,7 @@
 package com.test.bcnc.infrastructure.price.rest;
 
 import com.test.bcnc.application.exceptions.PriceNotFoundException;
-import com.test.bcnc.application.port.PriceSelectorInteractionPort;
+import com.test.bcnc.application.service.PriceService;
 import com.test.bcnc.infrastructure.price.rest.dto.PriceDTO;
 import com.test.bcnc.infrastructure.price.rest.dto.PriceRequest;
 import com.test.bcnc.infrastructure.price.rest.dto.mapper.PriceDTOMapper;
@@ -27,11 +27,11 @@ import java.time.ZoneId;
 @RequestMapping("/prices")
 public class PriceController {
 
-    private final PriceSelectorInteractionPort priceSelectorInteractionPort;
+    private final PriceService priceService;
     private final PriceDTOMapper priceDTOMapper;
 
-    public PriceController(PriceSelectorInteractionPort priceSelectorInteractionPort, PriceDTOMapper priceDTOMapper) {
-        this.priceSelectorInteractionPort = priceSelectorInteractionPort;
+    public PriceController(PriceService priceService, PriceDTOMapper priceDTOMapper) {
+        this.priceService = priceService;
         this.priceDTOMapper = priceDTOMapper;
     }
 
@@ -52,7 +52,7 @@ public class PriceController {
                         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
                         @Parameter(description = "price on a selected date", required = true, example = "2020-06-15T16:00:00.00Z")
                         @RequestParam(value = "on") OffsetDateTime on) throws PriceNotFoundException {
-        return priceDTOMapper.toResponse(priceSelectorInteractionPort.findBy(product, brand, LocalDateTime.ofInstant(on.toInstant(), ZoneId.of("UTC"))));
+        return priceDTOMapper.toResponse(priceService.findBy(product, brand, LocalDateTime.ofInstant(on.toInstant(), ZoneId.of("UTC"))));
     }
 
 
@@ -66,7 +66,7 @@ public class PriceController {
     @Operation(summary = "Finds a price from a search criteria.")
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public PriceDTO post(@RequestBody PriceRequest priceRequest) throws PriceNotFoundException {
-        return priceDTOMapper.toResponse(priceSelectorInteractionPort.findBy(priceRequest.getProduct(), priceRequest.getBrand(),
+        return priceDTOMapper.toResponse(priceService.findBy(priceRequest.getProduct(), priceRequest.getBrand(),
                 LocalDateTime.ofInstant(priceRequest.getOn().toInstant(), ZoneId.of("UTC"))));
     }
 }
