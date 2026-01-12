@@ -8,10 +8,12 @@
         <groups>
             <run>
                 <include name="mapperTests"/>
+                <include name="priceRepository"/>
             </run>
         </groups>
         <classes>
             <class name="com.test.bcnc.infrastructure.price.persistence.mapper.PriceMapper"/>
+            <class name="com.test.bcnc.infrastructure.price.persistence.PriceRepositoryTests"/>
         </classes>
     </test>
 </suite>

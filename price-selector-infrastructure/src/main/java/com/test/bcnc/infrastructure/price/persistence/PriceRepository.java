@@ -15,4 +15,6 @@ public interface PriceRepository extends JpaRepository<PriceEntity, Long> {
             Long productId, Long brand, LocalDateTime startDateTime, LocalDateTime endDateTime);
 
     List<PriceEntity> findByProduct(Long productId);
+
+    Optional<PriceEntity> findByProductAndPriceList(Long product, Long priceList);
 }
