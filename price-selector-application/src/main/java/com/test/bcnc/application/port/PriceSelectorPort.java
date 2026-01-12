@@ -6,7 +6,7 @@ import com.test.bcnc.domain.price.Price;
 import java.time.LocalDateTime;
 
 /***
- * Defines the app logic. How external services can interact with Price.
+ * Secondary port to interact with persistence layer.
  */
 public interface PriceSelectorPort {
 

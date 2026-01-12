@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
+/**
+ * Adapter between the user cases on PriceSelectorInteractionPort and the infrastructure layer accessed through PriceSelectorPort.
+ */
 @Component
 public class PriceSelectorAdapter implements PriceSelectorInteractionPort {
     private final PriceSelectorPort priceSelectorPort;
