@@ -12,13 +12,13 @@ import java.time.LocalDateTime;
 
 @Test(groups = "mapperTests")
 @SpringBootTest
-public class PriceMapperTest extends AbstractTestNGSpringContextTests {
+public class PriceDTOMapperTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private PriceMapper priceMapper;
 
     @Test
-    void mapper_toDomain() {
+    void mapper_toResponse() {
         final  LocalDateTime testDate = LocalDateTime.now();
 
         PriceEntity entity = new PriceEntity();

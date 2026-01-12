@@ -30,6 +30,7 @@ public class PriceEntity implements Serializable {
     private static final long serialVersionUID = -7178013292587511813L;
 
     @Id
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

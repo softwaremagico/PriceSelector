@@ -9,11 +9,14 @@
             <run>
                 <include name="mapperTests"/>
                 <include name="priceRepository"/>
+                <include name="priceServices"/>
             </run>
         </groups>
         <classes>
-            <class name="com.test.bcnc.infrastructure.price.persistence.mapper.PriceMapperTest"/>
+            <class name="com.test.bcnc.infrastructure.price.persistence.mapper.PriceDTOMapperTest"/>
             <class name="com.test.bcnc.infrastructure.price.persistence.PriceRepositoryTests"/>
+            <class name="com.test.bcnc.infrastructure.price.rest.PriceRequestedExampleTests"/>
+            <class name="com.test.bcnc.infrastructure.price.rest.PriceServicesTests"/>
         </classes>
     </test>
 </suite>
