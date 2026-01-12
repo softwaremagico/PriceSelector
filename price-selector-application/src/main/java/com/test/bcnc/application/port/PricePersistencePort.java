@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 /***
  * Secondary port to interact with persistence layer.
  */
-public interface PriceSelectorPort {
+public interface PricePersistencePort {
 
     Price findBy(Long productId, Long brand, LocalDateTime onDate);
 }
