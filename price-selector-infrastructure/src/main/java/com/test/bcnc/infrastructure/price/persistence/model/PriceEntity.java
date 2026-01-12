@@ -1,6 +1,5 @@
 package com.test.bcnc.infrastructure.price.persistence.model;
 
-import jakarta.persistence.Cacheable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,8 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serial;
@@ -18,11 +15,9 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * Prices. Reflects the final price (RRP) and the rate applied to a product in a chain between certain dates.
+ * Stores a price into a database table.
  */
 @Entity
-@Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "PRICES", indexes = {
         @Index(name = "ind_product_id", columnList = "PRODUCT_ID"),
         @Index(name = "ind_price_list", columnList = "PRICE_LIST"),
@@ -63,6 +58,10 @@ public class PriceEntity implements Serializable {
 
     @Column(name = "CURR")
     private String currency;
+
+    public Long getId() {
+        return id;
+    }
 
     public void setId(Long id) {
         this.id = id;

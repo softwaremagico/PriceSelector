@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>price-selector-logger</module>
         <module>price-selector-domain</module>
         <module>price-selector-application</module>
         <module>price-selector-infrastructure</module>

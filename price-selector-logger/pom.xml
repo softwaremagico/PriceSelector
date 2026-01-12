@@ -11,6 +11,10 @@
 
     <artifactId>price-selector-logger</artifactId>
 
+    <properties>
+        <main.basedir>${basedir}/..</main.basedir>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>ch.qos.logback</groupId>
