@@ -141,6 +141,8 @@ Successful Response (200 OK)
 }
 ```
 
+As the price with higher priority is always selected, only one price is returned. 
+
 Error Responses
 
 | HTTP Code | Description                   |
