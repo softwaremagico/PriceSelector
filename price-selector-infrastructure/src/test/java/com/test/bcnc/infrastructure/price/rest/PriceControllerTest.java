@@ -185,7 +185,7 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test
-    public void test6_invalid_price() throws Exception {
+    public void test6_not_found_price() throws Exception {
         MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
         requestParams.add("product", String.valueOf(PRODUCT_ID));
         requestParams.add("brand", String.valueOf(BRAND_ID));

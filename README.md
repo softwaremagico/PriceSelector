@@ -81,9 +81,9 @@ This strategy ensures:
 
 ## Date and Time Handling
 
-- All dates are handled in UTC
-- Instant is used internally to avoid timezone ambiguities
-- Clients must send dates in ISO-8601 format with Z
+- All dates are handled in UTC.
+- Instant is used internally to avoid timezone ambiguities.
+- Clients must send dates in ISO-8601 format with Z.
 
 Valid example:
 
@@ -138,3 +138,25 @@ Error Responses
 
 
 Errors are handled centrally using `@PriceSelectorExceptionControllerAdvice`.
+
+### Integration Tests
+
+The project includes integration tests using MockMvc and the full Spring context.
+
+Covered Scenarios
+
+| Test | Application Date    | Expected Price |
+| ---: | ------------------- | -------------- |
+|    1 | 2020-06-14 10:00:00 | 35.50 EUR      |
+|    2 | 2020-06-14 16:00:00 | 25.45 EUR      |
+|    3 | 2020-06-14 21:00:00 | 35.50 EUR      |
+|    4 | 2020-06-15 10:00:00 | 30.50 EUR      |
+|    5 | 2020-06-16 21:00:00 | 38.95 EUR      |
+
+
+Each test validates:
+
+- Final price.
+- Applied price list.
+- Start and end date.
+- Currency.
