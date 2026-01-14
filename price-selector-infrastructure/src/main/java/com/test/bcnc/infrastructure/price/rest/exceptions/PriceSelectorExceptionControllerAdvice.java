@@ -22,12 +22,12 @@ public class PriceSelectorExceptionControllerAdvice extends ResponseEntityExcept
     protected ResponseEntity<Object> handleHttpMessageNotReadable(
             HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         PriceLogger.errorMessage(this.getClass(), ex);
-        return new ResponseEntity<>(new ErrorResponse("MESSAGE_NOT_READABLE", ex), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ErrorResponse("MESSAGE_NOT_READABLE", ex.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(PriceNotFoundException.class)
     protected ResponseEntity<Object> priceNotFoundException(PriceNotFoundException ex) {
         PriceLogger.errorMessage(this.getClass(), ex);
-        return new ResponseEntity<>(new ErrorResponse("NOT_FOUND", "element_not_found", ex), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new ErrorResponse("PRICE_NOT_FOUND", ex.getMessage()), HttpStatus.NOT_FOUND);
     }
 }

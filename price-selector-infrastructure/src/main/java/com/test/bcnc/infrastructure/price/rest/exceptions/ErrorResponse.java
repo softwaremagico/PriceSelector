@@ -9,30 +9,16 @@ import java.io.Serializable;
 public class ErrorResponse implements Serializable {
     @Serial
     private static final long serialVersionUID = -257991215240650750L;
-    private final Throwable cause;
     private final String message;
     private final String code;
 
     public ErrorResponse(String message) {
-        this(message, null, null);
+        this(message, null);
     }
 
     public ErrorResponse(String message, String code) {
-        this(message, code, null);
-    }
-
-    public ErrorResponse(String message, Throwable cause) {
-        this(message, null, cause);
-    }
-
-    public ErrorResponse(String message, String code, Throwable cause) {
         this.message = message;
-        this.cause = cause;
         this.code = code;
-    }
-
-    public Throwable getCause() {
-        return cause;
     }
 
     public String getMessage() {
