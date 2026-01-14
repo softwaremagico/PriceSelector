@@ -36,9 +36,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ExtendWith(MockitoExtension.class)
 @Test(groups = "priceServices")
-public class PriceRequestedExampleTests extends AbstractTestNGSpringContextTests {
+public class PriceControllerTest extends AbstractTestNGSpringContextTests {
     private static final long PRODUCT_ID = 35455;
     private static final long BRAND_ID = 1;
+    private static final String CURRENCY = "EUR";
     private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssX");
 
     @Autowired
@@ -64,7 +65,7 @@ public class PriceRequestedExampleTests extends AbstractTestNGSpringContextTests
     }
 
     @Test
-    public void test1() throws Exception {
+    public void test1_2020_06_14_10_00() throws Exception {
         MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
         requestParams.add("product", String.valueOf(PRODUCT_ID));
         requestParams.add("brand", String.valueOf(BRAND_ID));
@@ -84,10 +85,11 @@ public class PriceRequestedExampleTests extends AbstractTestNGSpringContextTests
         Assert.assertEquals(price1.getPriceList(), 1);
         Assert.assertEquals(price1.getBrand(), BRAND_ID);
         Assert.assertEquals(price1.getPrice(), 35.50);
+        Assert.assertEquals(price1.getCurrency(), CURRENCY);
     }
 
     @Test
-    public void test2() throws Exception {
+    public void test2_2020_06_14_16_00() throws Exception {
         MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
         requestParams.add("product", String.valueOf(PRODUCT_ID));
         requestParams.add("brand", String.valueOf(BRAND_ID));
@@ -107,10 +109,11 @@ public class PriceRequestedExampleTests extends AbstractTestNGSpringContextTests
         Assert.assertEquals(price1.getPriceList(), 2);
         Assert.assertEquals(price1.getBrand(), BRAND_ID);
         Assert.assertEquals(price1.getPrice(), 25.45);
+        Assert.assertEquals(price1.getCurrency(), CURRENCY);
     }
 
     @Test
-    public void test3() throws Exception {
+    public void test3_2020_06_14_21_00() throws Exception {
         MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
         requestParams.add("product", String.valueOf(PRODUCT_ID));
         requestParams.add("brand", String.valueOf(BRAND_ID));
@@ -130,10 +133,11 @@ public class PriceRequestedExampleTests extends AbstractTestNGSpringContextTests
         Assert.assertEquals(price1.getPriceList(), 1);
         Assert.assertEquals(price1.getBrand(), BRAND_ID);
         Assert.assertEquals(price1.getPrice(), 35.50);
+        Assert.assertEquals(price1.getCurrency(), CURRENCY);
     }
 
     @Test
-    public void test4() throws Exception {
+    public void test4_2020_06_15_10_00() throws Exception {
         MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
         requestParams.add("product", String.valueOf(PRODUCT_ID));
         requestParams.add("brand", String.valueOf(BRAND_ID));
@@ -153,10 +157,11 @@ public class PriceRequestedExampleTests extends AbstractTestNGSpringContextTests
         Assert.assertEquals(price1.getPriceList(), 3);
         Assert.assertEquals(price1.getBrand(), BRAND_ID);
         Assert.assertEquals(price1.getPrice(), 30.50);
+        Assert.assertEquals(price1.getCurrency(), CURRENCY);
     }
 
     @Test
-    public void test5() throws Exception {
+    public void test5_2020_06_16_21_00() throws Exception {
         MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
         requestParams.add("product", String.valueOf(PRODUCT_ID));
         requestParams.add("brand", String.valueOf(BRAND_ID));
@@ -176,6 +181,26 @@ public class PriceRequestedExampleTests extends AbstractTestNGSpringContextTests
         Assert.assertEquals(price1.getPriceList(), 4);
         Assert.assertEquals(price1.getBrand(), BRAND_ID);
         Assert.assertEquals(price1.getPrice(), 38.95);
+        Assert.assertEquals(price1.getCurrency(), CURRENCY);
+    }
+
+    @Test
+    public void test6_invalid_price() throws Exception {
+        MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
+        requestParams.add("product", String.valueOf(PRODUCT_ID));
+        requestParams.add("brand", String.valueOf(BRAND_ID));
+        requestParams.add("on", LocalDateTime.of(2021, 6, 20, 10, 0)
+                .atOffset(ZoneOffset.UTC).format(dateTimeFormatter));
+
+        System.out.println("------------------------- Begin Expected Logged Exception -------------------------");
+        this.mockMvc
+                .perform(get("/prices")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .params(requestParams)
+                        .with(csrf()))
+                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andReturn();
+        System.out.println("------------------------- Begin Expected Logged Exception -------------------------");
     }
 
 }

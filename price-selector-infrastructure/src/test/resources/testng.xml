@@ -15,8 +15,7 @@
         <classes>
             <class name="com.test.bcnc.infrastructure.price.persistence.mapper.PriceDTOMapperTest"/>
             <class name="com.test.bcnc.infrastructure.price.persistence.PriceRepositoryTests"/>
-            <class name="com.test.bcnc.infrastructure.price.rest.PriceRequestedExampleTests"/>
-            <class name="com.test.bcnc.infrastructure.price.rest.PriceControllerTests"/>
+            <class name="com.test.bcnc.infrastructure.price.rest.PriceControllerTest"/>
         </classes>
     </test>
 </suite>
