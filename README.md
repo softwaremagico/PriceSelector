@@ -1,20 +1,36 @@
-# Price Selector Tool
+# Price Selector
 
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=softwaremagico_PriceSelector&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=kendo-tournament-frontend)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=softwaremagico_PriceSelector&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=kendo-tournament-frontend)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=softwaremagico_PriceSelector&metric=bugs)](https://sonarcloud.io/summary/new_code?id=kendo-tournament-frontend)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=softwaremagico_PriceSelector&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=kendo-tournament-frontend)
 
-This tool serves as an example of a REST server implemented using Spring Boot.
+PriceSelector is a RESTful service built with Spring Boot that allows querying the final applicable price of a product for a given brand at a specific
+application date.
 
-## Test
+When multiple prices overlap in time, the service applies the business rule of selecting the price with the highest priority.
 
-Instead of running the tool, you may consult the [tests](price-selector-infrastructure/src/test/java/com/test/bcnc/infrastructure/price/rest/PriceRequestedExampleTests.java)
-for detailed examples illustrating the tool’s functionality with different requests.
+The project uses an in-memory H2 database, is initialized with example data, and follows a Hexagonal Architecture (Ports & Adapters) to ensure clean separation
+of concerns, testability, and maintainability.
 
-## Installation
+## Technologies Used
 
-This example has been developed using Maven. To compile the project, please execute the following command:
+* Java 17
+* Spring Boot
+* Spring Web (REST API)
+* Spring Data JPA
+* Spring Validation
+* Hibernate / JPA
+* H2 In-Memory Database
+* Maven
+* TestNG for testing
+* Spring Boot Test / MockMvc
+* Swagger / OpenAPI (API documentation)
+* Checkstyle (code style enforcement)
+
+# Installation
+
+To compile the project, please execute the following command:
 
 ```
 mvn clean install
@@ -28,40 +44,97 @@ mvn spring-boot:run
 
 The tool will be available shortly.
 
+# Architecture
 
-## Accessing the REST Services
+The project follows a Hexagonal Architecture (also known as Ports & Adapters).
+The main goal is to keep the business domain independent of technical details such as persistence or web frameworks.
+
+## Architectural Principles
+
+* Domain isolation: The domain model contains no Spring or JPA annotations.
+* Explicit use cases: Business logic is implemented in GetApplicablePriceUseCase.
+* Ports for persistence: The domain defines what it needs, not how it is implemented.
+* Adapters for infrastructure: REST adapter (incoming).
+* JPA/H2 adapter (outgoing).
+* High testability and low coupling. 
+
+# Technical Decisions
+
+Main rule:
+
+> If multiple prices apply for the same product, brand, and date, the price with the highest priority is selected.
+
+## Persistence and Efficiency
+
+The application uses an H2 in-memory database, automatically initialized at startup using SQL scripts.
+
+The query strategy used is based on JPA. `findTopByProductAndBrandAndStartDateTimeBeforeAndEndDateTimeAfterOrderByPriorityDesc`.
+Where:
+ - Filters by `prduct`, `brandId` and a filter between `startDate` and `endDate`.
+ - `PriorityDesc` ensures that the highest priority is selected.
+ - `findTop` ensures that only one price is obtained.
+
+This strategy ensures:
+ - No unnecessary data loading.
+ - No in-memory sorting.
+ - Clear and efficient business logic.
+
+## Date and Time Handling
+
+- All dates are handled in UTC
+- Instant is used internally to avoid timezone ambiguities
+- Clients must send dates in ISO-8601 format with Z
+
+Valid example:
+
+```
+2020-06-14T10:00:00Z
+```
+### REST API
 
 Upon running the tool, navigate to the URL `http://localhost:8080/price-selector`.
 A Swagger interface will be displayed, presenting all available endpoints.
 
-### Searching for a Price
+> Note: For simplicity, no security measures have been incorporated into this project; therefore, all REST endpoints remain unprotected.
 
-A basic search can be performed via the endpoint `GET /prices`, which requires three parameters: `product`, `brand`, and `on`.
-
-An example using CURL is provided below:
+Main Endpoint
 
 ```
-curl -X 'GET' \
-  'http://localhost:8080/price-selector/prices?product=35455&brand=1&on=2020-06-15T16%3A00%3A00.00Z' \
-  -H 'accept: application/json'
-``` 
-
-And it will return:
-```
-{"product":35455,"brand":1,"priceList":4,"startDateTime":"2020-06-15T00:00:00","endDateTime":"2020-12-31T23:59:59","price":38.95}
+GET /prices
 ```
 
-Alternatively, if you prefer to utilize POST services, use the endpoint `POST /prices` with a payload structured as follows:
+| Parameter | Type     | Description                      |
+| --------- | -------- | -------------------------------- |
+| product   | number   | Product identifier               |
+| brand     | number   | Brand identifier                 |
+| on        | datetime | Application date (ISO-8601, UTC) |
+
+#### Example
+
+```
+GET /prices?product=35455&brand=1&on=2020-06-15T16%3A00%3A00.00Z'
+```
+
+Successful Response (200 OK)
 
 ```
 {
   "product": 35455,
   "brand": 1,
-  "on": "2020-06-14T18:00:00.0Z"
+  "priceList": 1,
+  "startDateTime": "2020-06-14T00:00:00Z",
+  "endDateTime": "2020-12-31T23:59:59Z",
+  "price": 35.50,
+  "currency": "EUR"
 }
 ```
 
-On this context, `product` denotes the product ID being queried, `brand` represents the brand ID,
-and `on` specifies the date and time for which the price is requested, formatted according to ISO-8601 in UTC.
+Error Responses
 
-> Note: For simplicity, no security measures have been incorporated into this project; therefore, all REST endpoints remain unprotected.
+| HTTP Code | Description                   |
+| --------- | ----------------------------- |
+| 400       | Invalid or missing parameters |
+| 404       | No applicable price found     |
+
+
+Errors are handled centrally using `@PriceSelectorExceptionControllerAdvice`.
