@@ -19,7 +19,7 @@ public class PriceSelectorAdapter implements PriceService {
     }
 
     @Override
-    public Price findBy(Long productId, Long brand, LocalDateTime onDate) {
-        return pricePersistencePort.findBy(productId, brand, onDate);
+    public Price findBy(Long productId, Long brand, LocalDateTime applicationDate) {
+        return pricePersistencePort.findBy(productId, brand, applicationDate);
     }
 }

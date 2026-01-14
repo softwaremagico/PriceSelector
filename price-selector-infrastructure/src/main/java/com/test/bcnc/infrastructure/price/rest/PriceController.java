@@ -40,19 +40,19 @@ public class PriceController {
     /**
      * Finds a price from a search criteria.
      *
-     * @param product The product to search.
-     * @param brand   The brand where this product belongs to.
-     * @param on      A date on ISO format for searching the price.
+     * @param productId The product to search.
+     * @param brandId   The brand where this product belongs to.
+     * @param applicationDate      A date on ISO format for searching the price.
      * @return the price information.
      * @throws PriceNotFoundException If no price exists on the selected date.
      */
     @Operation(summary = "Finds a price from a search criteria.")
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public PriceDTO get(@Parameter(name = "product", required = true, example = "35455") @RequestParam(value = "product") @Positive @NotNull Long product,
-                        @Parameter(name = "brand", required = true, example = "1") @RequestParam(value = "brand") @Positive @NotNull Long brand,
+    public PriceDTO get(@Parameter(name = "productId", required = true, example = "35455") @RequestParam(value = "productId") @Positive @NotNull Long productId,
+                        @Parameter(name = "brandId", required = true, example = "1") @RequestParam(value = "brandId") @Positive @NotNull Long brandId,
                         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
                         @Parameter(description = "price on a selected date", required = true, example = "2020-06-15T16:00:00.00Z")
-                        @RequestParam(value = "on") @NotNull OffsetDateTime on) throws PriceNotFoundException {
-        return priceDTOMapper.toResponse(priceService.findBy(product, brand, LocalDateTime.ofInstant(on.toInstant(), ZoneId.of("UTC"))));
+                        @RequestParam(value = "applicationDate") @NotNull OffsetDateTime applicationDate) throws PriceNotFoundException {
+        return priceDTOMapper.toResponse(priceService.findBy(productId, brandId, LocalDateTime.ofInstant(applicationDate.toInstant(), ZoneId.of("UTC"))));
     }
 }

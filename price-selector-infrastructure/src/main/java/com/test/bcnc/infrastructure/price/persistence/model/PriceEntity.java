@@ -35,13 +35,13 @@ public class PriceEntity implements Serializable {
     private Long id;
 
     @Column(name = "PRODUCT_ID")
-    private Long product;
+    private Long productId;
 
     @Column(name = "PRICE_LIST")
     private Long priceList;
 
     @Column(name = "BRAND_ID")
-    private Long brand;
+    private Long brandId;
 
     @Column(name = "START_DATE")
     @DateTimeFormat(pattern = "yyyy-MM-dd-HH.mm.ss")
@@ -68,12 +68,12 @@ public class PriceEntity implements Serializable {
         this.id = id;
     }
 
-    public Long getProduct() {
-        return product;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setProduct(Long product) {
-        this.product = product;
+    public void setProductId(Long product) {
+        this.productId = product;
     }
 
     public Long getPriceList() {
@@ -84,12 +84,12 @@ public class PriceEntity implements Serializable {
         this.priceList = priceList;
     }
 
-    public Long getBrand() {
-        return brand;
+    public Long getBrandId() {
+        return brandId;
     }
 
-    public void setBrand(Long brandId) {
-        this.brand = brandId;
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
     }
 
     public LocalDateTime getStartDateTime() {

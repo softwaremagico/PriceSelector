@@ -115,27 +115,27 @@ Main Endpoint
 GET /prices
 ```
 
-| Parameter | Type     | Description                      |
-| --------- | -------- | -------------------------------- |
-| product   | number   | Product identifier               |
-| brand     | number   | Brand identifier                 |
-| on        | datetime | Application date (ISO-8601, UTC) |
+| Parameter       | Type     | Description                      |
+|-----------------| -------- | -------------------------------- |
+| productId       | number   | Product identifier               |
+| brandId         | number   | Brand identifier                 |
+| applicationDate | datetime | Application date (ISO-8601, UTC) |
 
 #### Example
 
 ```
-GET /prices?product=35455&brand=1&on=2020-06-15T16%3A00%3A00.00Z'
+GET /prices?productId=35455&brandId=1&applicationDate=2020-06-15T16%3A00%3A00.00Z'
 ```
 
 Successful Response (200 OK)
 
 ```
 {
-  "product": 35455,
-  "brand": 1,
+  "productId": 35455,
+  "brandId": 1,
   "priceList": 1,
-  "startDateTime": "2020-06-14T00:00:00Z",
-  "endDateTime": "2020-12-31T23:59:59Z",
+  "startDate": "2020-06-14T00:00:00Z",
+  "endDate": "2020-12-31T23:59:59Z",
   "price": 35.50,
   "currency": "EUR"
 }

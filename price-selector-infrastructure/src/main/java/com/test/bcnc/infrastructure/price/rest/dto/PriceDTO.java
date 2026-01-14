@@ -12,34 +12,34 @@ public class PriceDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 6160402494109739147L;
 
-    private Long product;
+    private Long productId;
 
-    private Long brand;
+    private Long brandId;
 
     private Long priceList;
 
-    private LocalDateTime startDateTime;
+    private LocalDateTime startDate;
 
-    private LocalDateTime endDateTime;
+    private LocalDateTime endDate;
 
     private Double price;
 
     private String currency;
 
-    public Long getProduct() {
-        return product;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setProduct(Long product) {
-        this.product = product;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
-    public Long getBrand() {
-        return brand;
+    public Long getBrandId() {
+        return brandId;
     }
 
-    public void setBrand(Long brand) {
-        this.brand = brand;
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
     }
 
     public Long getPriceList() {
@@ -50,20 +50,20 @@ public class PriceDTO implements Serializable {
         this.priceList = priceList;
     }
 
-    public LocalDateTime getStartDateTime() {
-        return startDateTime;
+    public LocalDateTime getStartDate() {
+        return startDate;
     }
 
-    public void setStartDateTime(LocalDateTime startDateTime) {
-        this.startDateTime = startDateTime;
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDateTime() {
-        return endDateTime;
+    public LocalDateTime getEndDate() {
+        return endDate;
     }
 
-    public void setEndDateTime(LocalDateTime endDateTime) {
-        this.endDateTime = endDateTime;
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
     }
 
     public Double getPrice() {

@@ -14,10 +14,10 @@ import java.util.Optional;
 @Repository
 public interface PriceRepository extends JpaRepository<PriceEntity, Long> {
 
-    Optional<PriceEntity> findTopByProductAndBrandAndStartDateTimeBeforeAndEndDateTimeAfterOrderByPriorityDesc(
+    Optional<PriceEntity> findTopByProductIdAndBrandIdAndStartDateTimeBeforeAndEndDateTimeAfterOrderByPriorityDesc(
             Long productId, Long brand, LocalDateTime startDateTime, LocalDateTime endDateTime);
 
-    List<PriceEntity> findByProduct(Long productId);
+    List<PriceEntity> findByProductId(Long productId);
 
-    Optional<PriceEntity> findByProductAndPriceList(Long product, Long priceList);
+    Optional<PriceEntity> findByProductIdAndPriceList(Long product, Long priceList);
 }

@@ -24,9 +24,9 @@ public class PriceDTOMapperTest extends AbstractTestNGSpringContextTests {
         PriceEntity entity = new PriceEntity();
         entity.setId(1L);
         entity.setCurrency("USD");
-        entity.setBrand(1L);
+        entity.setBrandId(1L);
         entity.setPrice(42D);
-        entity.setProduct(35445L);
+        entity.setProductId(35445L);
         entity.setPriceList(1L);
         entity.setPriority(2L);
         entity.setStartDateTime(testDate.minusDays(1));
@@ -35,13 +35,13 @@ public class PriceDTOMapperTest extends AbstractTestNGSpringContextTests {
         Price domain = new Price();
         domain.setId(1L);
         domain.setCurrency("USD");
-        domain.setBrand(1L);
+        domain.setBrandId(1L);
         domain.setPrice(42D);
-        domain.setProduct(35445L);
+        domain.setProductId(35445L);
         domain.setPriceList(1L);
         domain.setPriority(2L);
-        domain.setStartDateTime(testDate.minusDays(1));
-        domain.setEndDateTime(testDate.plusDays(1));
+        domain.setStartDate(testDate.minusDays(1));
+        domain.setEndDate(testDate.plusDays(1));
 
         Price result = priceMapper.toDomain(entity);
 
@@ -55,9 +55,9 @@ public class PriceDTOMapperTest extends AbstractTestNGSpringContextTests {
         PriceEntity entity = new PriceEntity();
         entity.setId(1L);
         entity.setCurrency("USD");
-        entity.setBrand(1L);
+        entity.setBrandId(1L);
         entity.setPrice(42D);
-        entity.setProduct(35445L);
+        entity.setProductId(35445L);
         entity.setPriceList(1L);
         entity.setPriority(2L);
         entity.setStartDateTime(testDate.minusDays(1));
@@ -66,13 +66,13 @@ public class PriceDTOMapperTest extends AbstractTestNGSpringContextTests {
         Price domain = new Price();
         domain.setId(1L);
         domain.setCurrency("USD");
-        domain.setBrand(1L);
+        domain.setBrandId(1L);
         domain.setPrice(42D);
-        domain.setProduct(35445L);
+        domain.setProductId(35445L);
         domain.setPriceList(1L);
         domain.setPriority(2L);
-        domain.setStartDateTime(testDate.minusDays(1));
-        domain.setEndDateTime(testDate.plusDays(1));
+        domain.setStartDate(testDate.minusDays(1));
+        domain.setEndDate(testDate.plusDays(1));
 
         PriceEntity result = priceMapper.toEntity(domain);
 

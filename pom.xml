@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.test.bcnc</groupId>
     <artifactId>price-selector</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <name>Price Selector BCNC</name>
     <packaging>pom</packaging>
 

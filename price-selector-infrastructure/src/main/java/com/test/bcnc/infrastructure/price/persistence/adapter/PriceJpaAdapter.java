@@ -27,11 +27,11 @@ public class PriceJpaAdapter implements PricePersistencePort {
 
 
     @Override
-    public Price findBy(Long productId, Long brand, LocalDateTime onDate) {
-        final Optional<PriceEntity> priceEntity = repository.findTopByProductAndBrandAndStartDateTimeBeforeAndEndDateTimeAfterOrderByPriorityDesc(
-                productId, brand, onDate, onDate);
+    public Price findBy(Long productId, Long brand, LocalDateTime applicationDate) {
+        final Optional<PriceEntity> priceEntity = repository.findTopByProductIdAndBrandIdAndStartDateTimeBeforeAndEndDateTimeAfterOrderByPriorityDesc(
+                productId, brand, applicationDate, applicationDate);
         return priceMapper.toDomain(priceEntity.orElseThrow(() ->
                 new PriceNotFoundException(getClass(), "No price found with productId '" + productId + "' and brand '"
-                        + brand + "' on date '" + onDate + "'")));
+                        + brand + "' on date '" + applicationDate + "'")));
     }
 }

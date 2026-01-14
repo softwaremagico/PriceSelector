@@ -25,31 +25,31 @@ public class PriceSelectorAdapterTest extends AbstractTestNGSpringContextTests {
         Price price1 = priceSelectorAdapter.findBy(
                 PRODUCT_ID, BRAND_ID,
                 LocalDateTime.of(2020, 6, 14, 10, 0));
-        Assert.assertEquals(price1.getProduct(), PRODUCT_ID);
+        Assert.assertEquals(price1.getProductId(), PRODUCT_ID);
         Assert.assertEquals(price1.getPriceList(), 1);
 
         Price price2 = priceSelectorAdapter.findBy(
                 PRODUCT_ID, BRAND_ID,
                 LocalDateTime.of(2020, 6, 14, 16, 0));
-        Assert.assertEquals(price2.getProduct(), PRODUCT_ID);
+        Assert.assertEquals(price2.getProductId(), PRODUCT_ID);
         Assert.assertEquals(price2.getPriceList(), 2);
 
         Price price3 = priceSelectorAdapter.findBy(
                 PRODUCT_ID, BRAND_ID,
                 LocalDateTime.of(2020, 6, 14, 21, 0));
-        Assert.assertEquals(price3.getProduct(), PRODUCT_ID);
+        Assert.assertEquals(price3.getProductId(), PRODUCT_ID);
         Assert.assertEquals(price3.getPriceList(), 1);
 
         Price price4 = priceSelectorAdapter.findBy(
                 PRODUCT_ID, BRAND_ID,
                 LocalDateTime.of(2020, 6, 15, 10, 0));
-        Assert.assertEquals(price4.getProduct(), PRODUCT_ID);
+        Assert.assertEquals(price4.getProductId(), PRODUCT_ID);
         Assert.assertEquals(price4.getPriceList(), 3);
 
         Price price5 = priceSelectorAdapter.findBy(
                 PRODUCT_ID, BRAND_ID,
                 LocalDateTime.of(2020, 6, 16, 21, 0));
-        Assert.assertEquals(price5.getProduct(), PRODUCT_ID);
+        Assert.assertEquals(price5.getProductId(), PRODUCT_ID);
         Assert.assertEquals(price5.getPriceList(), 4);
     }
 

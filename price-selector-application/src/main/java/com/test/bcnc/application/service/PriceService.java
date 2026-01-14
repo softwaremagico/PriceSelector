@@ -10,5 +10,5 @@ import java.time.LocalDateTime;
  */
 public interface PriceService {
 
-    Price findBy(Long productId, Long brand, LocalDateTime onDate);
+    Price findBy(Long productId, Long brand, LocalDateTime applicationDate);
 }

@@ -67,9 +67,9 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
     @Test
     public void test1_2020_06_14_10_00() throws Exception {
         MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
-        requestParams.add("product", String.valueOf(PRODUCT_ID));
-        requestParams.add("brand", String.valueOf(BRAND_ID));
-        requestParams.add("on", LocalDateTime.of(2020, 6, 14, 10, 0)
+        requestParams.add("productId", String.valueOf(PRODUCT_ID));
+        requestParams.add("brandId", String.valueOf(BRAND_ID));
+        requestParams.add("applicationDate", LocalDateTime.of(2020, 6, 14, 10, 0)
                 .atOffset(ZoneOffset.UTC).format(dateTimeFormatter));
 
         MvcResult createResult = this.mockMvc
@@ -81,9 +81,9 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
                 .andReturn();
 
         final PriceDTO price1 = fromJson(createResult.getResponse().getContentAsString(), PriceDTO.class);
-        Assert.assertEquals(price1.getProduct(), PRODUCT_ID);
+        Assert.assertEquals(price1.getProductId(), PRODUCT_ID);
         Assert.assertEquals(price1.getPriceList(), 1);
-        Assert.assertEquals(price1.getBrand(), BRAND_ID);
+        Assert.assertEquals(price1.getBrandId(), BRAND_ID);
         Assert.assertEquals(price1.getPrice(), 35.50);
         Assert.assertEquals(price1.getCurrency(), CURRENCY);
     }
@@ -91,9 +91,9 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
     @Test
     public void test2_2020_06_14_16_00() throws Exception {
         MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
-        requestParams.add("product", String.valueOf(PRODUCT_ID));
-        requestParams.add("brand", String.valueOf(BRAND_ID));
-        requestParams.add("on", LocalDateTime.of(2020, 6, 14, 16, 0)
+        requestParams.add("productId", String.valueOf(PRODUCT_ID));
+        requestParams.add("brandId", String.valueOf(BRAND_ID));
+        requestParams.add("applicationDate", LocalDateTime.of(2020, 6, 14, 16, 0)
                 .atOffset(ZoneOffset.UTC).format(dateTimeFormatter));
 
         MvcResult createResult = this.mockMvc
@@ -105,9 +105,9 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
                 .andReturn();
 
         final PriceDTO price1 = fromJson(createResult.getResponse().getContentAsString(), PriceDTO.class);
-        Assert.assertEquals(price1.getProduct(), PRODUCT_ID);
+        Assert.assertEquals(price1.getProductId(), PRODUCT_ID);
         Assert.assertEquals(price1.getPriceList(), 2);
-        Assert.assertEquals(price1.getBrand(), BRAND_ID);
+        Assert.assertEquals(price1.getBrandId(), BRAND_ID);
         Assert.assertEquals(price1.getPrice(), 25.45);
         Assert.assertEquals(price1.getCurrency(), CURRENCY);
     }
@@ -115,9 +115,9 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
     @Test
     public void test3_2020_06_14_21_00() throws Exception {
         MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
-        requestParams.add("product", String.valueOf(PRODUCT_ID));
-        requestParams.add("brand", String.valueOf(BRAND_ID));
-        requestParams.add("on", LocalDateTime.of(2020, 6, 14, 21, 0)
+        requestParams.add("productId", String.valueOf(PRODUCT_ID));
+        requestParams.add("brandId", String.valueOf(BRAND_ID));
+        requestParams.add("applicationDate", LocalDateTime.of(2020, 6, 14, 21, 0)
                 .atOffset(ZoneOffset.UTC).format(dateTimeFormatter));
 
         MvcResult createResult = this.mockMvc
@@ -129,9 +129,9 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
                 .andReturn();
 
         final PriceDTO price1 = fromJson(createResult.getResponse().getContentAsString(), PriceDTO.class);
-        Assert.assertEquals(price1.getProduct(), PRODUCT_ID);
+        Assert.assertEquals(price1.getProductId(), PRODUCT_ID);
         Assert.assertEquals(price1.getPriceList(), 1);
-        Assert.assertEquals(price1.getBrand(), BRAND_ID);
+        Assert.assertEquals(price1.getBrandId(), BRAND_ID);
         Assert.assertEquals(price1.getPrice(), 35.50);
         Assert.assertEquals(price1.getCurrency(), CURRENCY);
     }
@@ -139,9 +139,9 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
     @Test
     public void test4_2020_06_15_10_00() throws Exception {
         MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
-        requestParams.add("product", String.valueOf(PRODUCT_ID));
-        requestParams.add("brand", String.valueOf(BRAND_ID));
-        requestParams.add("on", LocalDateTime.of(2020, 6, 15, 10, 0)
+        requestParams.add("productId", String.valueOf(PRODUCT_ID));
+        requestParams.add("brandId", String.valueOf(BRAND_ID));
+        requestParams.add("applicationDate", LocalDateTime.of(2020, 6, 15, 10, 0)
                 .atOffset(ZoneOffset.UTC).format(dateTimeFormatter));
 
         MvcResult createResult = this.mockMvc
@@ -153,9 +153,9 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
                 .andReturn();
 
         final PriceDTO price1 = fromJson(createResult.getResponse().getContentAsString(), PriceDTO.class);
-        Assert.assertEquals(price1.getProduct(), PRODUCT_ID);
+        Assert.assertEquals(price1.getProductId(), PRODUCT_ID);
         Assert.assertEquals(price1.getPriceList(), 3);
-        Assert.assertEquals(price1.getBrand(), BRAND_ID);
+        Assert.assertEquals(price1.getBrandId(), BRAND_ID);
         Assert.assertEquals(price1.getPrice(), 30.50);
         Assert.assertEquals(price1.getCurrency(), CURRENCY);
     }
@@ -163,9 +163,9 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
     @Test
     public void test5_2020_06_16_21_00() throws Exception {
         MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
-        requestParams.add("product", String.valueOf(PRODUCT_ID));
-        requestParams.add("brand", String.valueOf(BRAND_ID));
-        requestParams.add("on", LocalDateTime.of(2020, 6, 16, 21, 0)
+        requestParams.add("productId", String.valueOf(PRODUCT_ID));
+        requestParams.add("brandId", String.valueOf(BRAND_ID));
+        requestParams.add("applicationDate", LocalDateTime.of(2020, 6, 16, 21, 0)
                 .atOffset(ZoneOffset.UTC).format(dateTimeFormatter));
 
         MvcResult createResult = this.mockMvc
@@ -177,9 +177,9 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
                 .andReturn();
 
         final PriceDTO price1 = fromJson(createResult.getResponse().getContentAsString(), PriceDTO.class);
-        Assert.assertEquals(price1.getProduct(), PRODUCT_ID);
+        Assert.assertEquals(price1.getProductId(), PRODUCT_ID);
         Assert.assertEquals(price1.getPriceList(), 4);
-        Assert.assertEquals(price1.getBrand(), BRAND_ID);
+        Assert.assertEquals(price1.getBrandId(), BRAND_ID);
         Assert.assertEquals(price1.getPrice(), 38.95);
         Assert.assertEquals(price1.getCurrency(), CURRENCY);
     }
@@ -187,9 +187,9 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
     @Test
     public void test6_not_found_price() throws Exception {
         MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
-        requestParams.add("product", String.valueOf(PRODUCT_ID));
-        requestParams.add("brand", String.valueOf(BRAND_ID));
-        requestParams.add("on", LocalDateTime.of(2021, 6, 20, 10, 0)
+        requestParams.add("productId", String.valueOf(PRODUCT_ID));
+        requestParams.add("brandId", String.valueOf(BRAND_ID));
+        requestParams.add("applicationDate", LocalDateTime.of(2021, 6, 20, 10, 0)
                 .atOffset(ZoneOffset.UTC).format(dateTimeFormatter));
 
         System.out.println("------------------------- Begin Expected Logged Exception -------------------------");
@@ -206,8 +206,8 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
     @Test
     public void test7_invalid_parameters() throws Exception {
         MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
-        requestParams.add("brand", String.valueOf(BRAND_ID));
-        requestParams.add("on", LocalDateTime.of(2021, 6, 20, 10, 0)
+        requestParams.add("brandId", String.valueOf(BRAND_ID));
+        requestParams.add("applicationDate", LocalDateTime.of(2021, 6, 20, 10, 0)
                 .atOffset(ZoneOffset.UTC).format(dateTimeFormatter));
 
         this.mockMvc

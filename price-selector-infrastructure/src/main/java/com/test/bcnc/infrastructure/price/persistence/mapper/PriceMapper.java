@@ -14,6 +14,8 @@ public class PriceMapper {
         }
         final Price price = new Price();
         BeanUtils.copyProperties(entity, price, ConverterUtils.getNullPropertyNames(entity));
+        price.setStartDate(entity.getStartDateTime());
+        price.setEndDate(entity.getEndDateTime());
         return price;
     }
 
@@ -23,6 +25,8 @@ public class PriceMapper {
         }
         final PriceEntity entity = new PriceEntity();
         BeanUtils.copyProperties(price, entity);
+        entity.setStartDateTime(price.getStartDate());
+        entity.setEndDateTime(price.getEndDate());
         return entity;
     }
 }
