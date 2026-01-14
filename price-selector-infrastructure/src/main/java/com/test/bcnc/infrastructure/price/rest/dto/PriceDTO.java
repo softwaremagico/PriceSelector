@@ -24,6 +24,8 @@ public class PriceDTO implements Serializable {
 
     private Double price;
 
+    private String currency;
+
     public Long getProduct() {
         return product;
     }
@@ -70,5 +72,13 @@ public class PriceDTO implements Serializable {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }
