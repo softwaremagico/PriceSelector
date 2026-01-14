@@ -34,30 +34,30 @@ public class PriceEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "PRODUCT_ID")
+    @Column(name = "PRODUCT_ID", nullable = false)
     private Long productId;
 
-    @Column(name = "PRICE_LIST")
+    @Column(name = "PRICE_LIST", nullable = false)
     private Long priceList;
 
-    @Column(name = "BRAND_ID")
+    @Column(name = "BRAND_ID", nullable = false)
     private Long brandId;
 
-    @Column(name = "START_DATE")
+    @Column(name = "START_DATE", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd-HH.mm.ss")
     private LocalDateTime startDateTime;
 
-    @Column(name = "END_DATE")
+    @Column(name = "END_DATE", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd-HH.mm.ss")
     private LocalDateTime endDateTime;
 
-    @Column(name = "PRIORITY")
+    @Column(name = "PRIORITY", nullable = false)
     private Long priority;
 
-    @Column(name = "PRICE")
+    @Column(name = "PRICE", nullable = false)
     private Double price;
 
-    @Column(name = "CURR")
+    @Column(name = "CURR", nullable = false)
     private String currency;
 
     public Long getId() {

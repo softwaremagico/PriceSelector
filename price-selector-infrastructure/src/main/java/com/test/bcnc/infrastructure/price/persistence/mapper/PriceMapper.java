@@ -12,11 +12,8 @@ public class PriceMapper {
         if (entity == null) {
             return null;
         }
-        final Price price = new Price();
-        BeanUtils.copyProperties(entity, price, ConverterUtils.getNullPropertyNames(entity));
-        price.setStartDate(entity.getStartDateTime());
-        price.setEndDate(entity.getEndDateTime());
-        return price;
+        return new Price(entity.getBrandId(), entity.getProductId(), entity.getPriceList(), entity.getPriority(), entity.getStartDateTime(),
+                entity.getEndDateTime(), entity.getPrice(), entity.getCurrency());
     }
 
     public PriceEntity toEntity(Price price) {
