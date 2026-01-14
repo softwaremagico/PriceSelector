@@ -5,6 +5,8 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=softwaremagico_PriceSelector&metric=bugs)](https://sonarcloud.io/summary/new_code?id=kendo-tournament-frontend)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=softwaremagico_PriceSelector&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=kendo-tournament-frontend)
 
+This project was developed as a technical assessment exercise, focusing on clean design, correctness, performance, and maintainability.
+
 PriceSelector is a RESTful service built with Spring Boot that allows querying the final applicable price of a product for a given brand at a specific
 application date.
 
@@ -64,7 +66,17 @@ Main rule:
 
 > If multiple prices apply for the same product, brand, and date, the price with the highest priority is selected.
 
-## Persistence and Efficiency
+Each price contains:
+- brandId
+- productId
+- priceList
+- priority
+- startDate
+- endDate
+- price
+- currency
+
+### Persistence and Efficiency
 
 The application uses an H2 in-memory database, automatically initialized at startup using SQL scripts.
 
@@ -79,7 +91,7 @@ This strategy ensures:
  - No in-memory sorting.
  - Clear and efficient business logic.
 
-## Date and Time Handling
+### Date and Time Handling
 
 - All dates are handled in UTC.
 - Instant is used internally to avoid timezone ambiguities.
@@ -157,6 +169,12 @@ Covered Scenarios
 Each test validates:
 
 - Final price.
+- Product.
 - Applied price list.
-- Start and end date.
+- Brand.
 - Currency.
+
+Additional negative tests:
+
+- No applicable price (Expected 404)
+- Invalid parameters (Expected 400)

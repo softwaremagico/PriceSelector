@@ -6,8 +6,11 @@ import com.test.bcnc.infrastructure.price.rest.dto.PriceDTO;
 import com.test.bcnc.infrastructure.price.rest.dto.mapper.PriceDTOMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +23,7 @@ import java.time.ZoneId;
 /**
  * Provides an API REST for Price.
  */
+@Validated
 @RestController
 @RequestMapping("/prices")
 public class PriceController {
@@ -44,11 +48,11 @@ public class PriceController {
      */
     @Operation(summary = "Finds a price from a search criteria.")
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public PriceDTO get(@Parameter(name = "product", required = true, example = "35455") @RequestParam(value = "product") Long product,
-                        @Parameter(name = "brand", required = true, example = "1") @RequestParam(value = "brand") Long brand,
+    public PriceDTO get(@Parameter(name = "product", required = true, example = "35455") @RequestParam(value = "product") @Positive @NotNull Long product,
+                        @Parameter(name = "brand", required = true, example = "1") @RequestParam(value = "brand") @Positive @NotNull Long brand,
                         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
                         @Parameter(description = "price on a selected date", required = true, example = "2020-06-15T16:00:00.00Z")
-                        @RequestParam(value = "on") OffsetDateTime on) throws PriceNotFoundException {
+                        @RequestParam(value = "on") @NotNull OffsetDateTime on) throws PriceNotFoundException {
         return priceDTOMapper.toResponse(priceService.findBy(product, brand, LocalDateTime.ofInstant(on.toInstant(), ZoneId.of("UTC"))));
     }
 }

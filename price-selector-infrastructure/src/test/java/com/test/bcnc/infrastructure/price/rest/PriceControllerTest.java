@@ -203,4 +203,20 @@ public class PriceControllerTest extends AbstractTestNGSpringContextTests {
         System.out.println("------------------------- Begin Expected Logged Exception -------------------------");
     }
 
+    @Test
+    public void test7_invalid_parameters() throws Exception {
+        MultiValueMap<String, String> requestParams = new LinkedMultiValueMap<>();
+        requestParams.add("brand", String.valueOf(BRAND_ID));
+        requestParams.add("on", LocalDateTime.of(2021, 6, 20, 10, 0)
+                .atOffset(ZoneOffset.UTC).format(dateTimeFormatter));
+
+        this.mockMvc
+                .perform(get("/prices")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .params(requestParams)
+                        .with(csrf()))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andReturn();
+    }
+
 }
