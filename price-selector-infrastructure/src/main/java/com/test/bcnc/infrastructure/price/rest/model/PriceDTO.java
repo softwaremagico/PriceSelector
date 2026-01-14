@@ -1,4 +1,4 @@
-package com.test.bcnc.infrastructure.price.rest.dto;
+package com.test.bcnc.infrastructure.price.rest.model;
 
 import java.io.Serial;
 import java.io.Serializable;

@@ -2,7 +2,7 @@ package com.test.bcnc.infrastructure.price.rest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.test.bcnc.infrastructure.price.rest.dto.PriceDTO;
+import com.test.bcnc.infrastructure.price.rest.model.PriceDTO;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;

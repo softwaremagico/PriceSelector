@@ -1,8 +1,8 @@
-package com.test.bcnc.infrastructure.price.rest.dto.mapper;
+package com.test.bcnc.infrastructure.price.rest.mapper;
 
 import com.test.bcnc.domain.price.Price;
 import com.test.bcnc.infrastructure.price.persistence.mapper.ConverterUtils;
-import com.test.bcnc.infrastructure.price.rest.dto.PriceDTO;
+import com.test.bcnc.infrastructure.price.rest.model.PriceDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 

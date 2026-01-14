@@ -2,8 +2,8 @@ package com.test.bcnc.infrastructure.price.rest;
 
 import com.test.bcnc.application.exceptions.PriceNotFoundException;
 import com.test.bcnc.application.service.PriceService;
-import com.test.bcnc.infrastructure.price.rest.dto.PriceDTO;
-import com.test.bcnc.infrastructure.price.rest.dto.mapper.PriceDTOMapper;
+import com.test.bcnc.infrastructure.price.rest.model.PriceDTO;
+import com.test.bcnc.infrastructure.price.rest.mapper.PriceDTOMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.constraints.NotNull;
